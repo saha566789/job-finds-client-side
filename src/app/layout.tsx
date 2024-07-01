@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -7,6 +7,9 @@ import { getServerSession } from "next-auth";
 import SessionProvider from "@/utils/SessionProvider";
 import {Providers} from "./providers";
 
+// shared
+import Navbar from "@/components/shared/Navbar"
+import Footer from "@/components/shared/Footer" 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,7 +24,7 @@ export default async function RootLayout({
 }) {
   const session = await getServerSession();
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="white">
       <body className={inter.className}>
         <Providers>
 
@@ -29,6 +32,7 @@ export default async function RootLayout({
           <div className="mx-auto max-w-5xl text-2xl gap-2 mb-10">
             <Navbar />
             {children}
+            <Footer />
           </div>
         </SessionProvider>
         </Providers>
