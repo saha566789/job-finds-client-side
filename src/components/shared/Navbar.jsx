@@ -13,8 +13,7 @@ const Navbar = () => {
 
     const navLinks = [
         { name: "Home", route: "/" },
-        { name: "Jobs", route: "/jobs" },
-        { name: "Add jobs", route: "/add-jobs" },
+        { name: "Add jobs", route: "/addjob" },
         { name: "Bookmark", route: "/bookmark" },
       ];
   const [openMobileMenu, setOpenMobileMenu] =
@@ -25,19 +24,20 @@ const Navbar = () => {
 
   };
   return (
-    <nav className="py-5 bg-transparent relative top-0 z-10 w-full">
-      <div className="max-w-[1450px] w-[90%] mx-auto flex justify-between items-center">
+   <div className="flex justify-center   items-center mx-auto mt-6">
+     <div className=" absolute bg-transparent top-4 z-10 m-auto w-[55%] ">
+      <div className="max-w-[1280px] mx-auto flex justify-between items-center">
         <Link href={"/"}>
           <div className="flex items-center gap-1">
             <h1 className="text-black font-semibold uppercase text-xl">
-              Workify
+            JobFinds
             </h1>
 
             <MdAdsClick className="text-purple-600 text-3xl" />
           </div>
         </Link>
 
-        <ul className="flex gap-16 items-center max-md:hidden">
+        <ul className="flex gap-10 items-center max-md:hidden">
           {navLinks.map((link, index) => (
             <Link href={link.route} key={index}>
               <li>{link.name}</li>
@@ -72,7 +72,8 @@ const Navbar = () => {
           )}
         </div>
       </div>
-    </nav>
+    </div>
+   </div>
   );
 };
 

@@ -1,10 +1,10 @@
-
+import SearchFrom from "@/components/ui/SearchFrom"
 
 
 const Banner = () => {
     return (
         <div  id="home"
-        className=" h-screen relative w-full bg-cover mt-[-70px]"
+        className=" h-screen w-full bg-cover mt-[-127px]"
         style={{
             backgroundImage:"url(/hero.png)"
         }}>
@@ -22,7 +22,7 @@ const Banner = () => {
             waiting
           </span>
         </div>
-        
+        <SearchFrom />
       </div>
         </div>
     );
