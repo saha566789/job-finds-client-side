@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { Input } from "@nextui-org/react";
+import { Input, Progress } from "@nextui-org/react";
 import { EyeFilledIcon } from "../register/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "../register/EyeSlashFilledIcon";
 
@@ -64,7 +64,12 @@ const Register = () => {
   };
 
   if (sessionStatus === "loading") {
-    return <h1>Loading...</h1>;
+    return <div className="flex justify-center items-center h-[500px] mt-24 "><Progress
+    size="sm"
+    isIndeterminate
+    aria-label="Loading..."
+    className="max-w-md"
+  /></div>;
   }
 
   return (
