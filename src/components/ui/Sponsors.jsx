@@ -4,8 +4,8 @@ const Sponsors = () => {
   return (
     <section className="py-10">
       <div className="max-w-[1450px] w-[90%] mx-auto">
-        <div className="w-full text-center">
-          <h2 className="text-3xl">
+        <div className="lg:w-full text-center w-[290px]">
+          <h2 className="lg:text-3xl text-lg">
             More Than{" "}
             <span className="text-purple-600 font-bold">
               10,000 Companies
@@ -14,7 +14,7 @@ const Sponsors = () => {
           </h2>
         </div>
 
-        <div className="flex justify-between items-center mt-5 flex-wrap gap-10">
+        <div className="flex justify-between items-center mt-5 flex-wrap gap-10 ml-10 lg:ml-0">
           <Image
             src={"/job-listing-images/airbnb.png"}
             alt="Airbnb logo"

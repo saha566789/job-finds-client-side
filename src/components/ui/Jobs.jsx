@@ -49,11 +49,11 @@ const jobsPage = () => {
   ]
 
   return (
-    <div className='mt-2'>
-      <div className="w-full text-center mb-10 text-2xl font-extrabold uppercase text-purple-600">
+    <div className='lg:mt-2 mt-4  lg:w-full w-[300px]'>
+      <div className="w-full text-center mb-10 lg:text-2xl text-lg font-semibold lg:font-extrabold uppercase text-purple-600">
         <h2>Job Listings</h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-4 lg:gap-7 p-2 xl:p-0">
+      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-4 lg:gap-7 p-2 xl:p-0  ">
         {
           jobs.map((job) => {
             return (

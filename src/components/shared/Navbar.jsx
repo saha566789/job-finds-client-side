@@ -25,7 +25,7 @@ const Navbar = () => {
   };
   return (
    <div className="flex justify-center   items-center mx-auto mt-6">
-     <div className=" absolute bg-transparent top-4 z-10 m-auto w-[55%] ">
+     <div className=" absolute bg-transparent top-4 z-10 m-auto lg:w-[55%] ">
       <div className="max-w-[1280px] mx-auto flex justify-between items-center">
         <Link href={"/"}>
           <div className="flex items-center gap-1">
