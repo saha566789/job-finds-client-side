@@ -9,8 +9,10 @@ import { MdAdsClick } from "react-icons/md";
 import { useState } from "react";
 import { Button } from "@nextui-org/react";
 
-const Navbar = () => {
+import { signOut, useSession } from "next-auth/react";
 
+const Navbar = () => {
+  const { data: session }: any = useSession();
     const navLinks = [
         { name: "Home", route: "/" },
         { name: "Add jobs", route: "/addjob" },
@@ -46,9 +48,25 @@ const Navbar = () => {
         </ul>
 
         <div className="max-md:flex justify-center items-center gap-10">
-          <Link href={"/register"}>
+        {!session ?  (<Link href={"/register"}>
             <Button className="bg-purple-400 font-semibold text-white">Register</Button>
-          </Link>
+          </Link>)
+        :
+        
+        (
+          <>
+            
+         
+            <Button 
+             onClick={() => {
+              signOut();
+            }}
+            className="bg-purple-400 font-semibold text-white">logout</Button>
+            
+          </>
+        )
+        }
+         
 
           <div
             className="md:hidden text-3xl cursor-pointer text-black"

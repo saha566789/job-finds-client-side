@@ -16,7 +16,7 @@ const Register = () => {
   const toggleVisibility = () => setIsVisible(!isVisible);
   useEffect(() => {
     if (sessionStatus === "authenticated") {
-      router.replace("/dashboard");
+      router.replace("/");
     }
   }, [sessionStatus, router]);
 
@@ -65,11 +65,11 @@ const Register = () => {
 
   if (sessionStatus === "loading") {
     return <div className="flex justify-center items-center h-[500px] mt-24 "><Progress
-    size="sm"
-    isIndeterminate
-    aria-label="Loading..."
-    className="max-w-md"
-  /></div>;
+      size="sm"
+      isIndeterminate
+      aria-label="Loading..."
+      className="max-w-md"
+    /></div>;
   }
 
   return (
@@ -78,19 +78,20 @@ const Register = () => {
         <div className="bg-white p-8 rounded shadow-md w-96">
           <h1 className="text-4xl text-center font-semibold mb-8">Register</h1>
           <form onSubmit={handleSubmit}>
+          
             <Input
 
               type="email"
               label="Email"
               variant="bordered"
-              defaultValue="abc@gmail.com"
+              placeholder="Enter your email"
               className="max-w-xs mb-6"
             />
-           <Input
+            <Input
               label="Password"
               variant="bordered"
               placeholder="Enter your password"
-            
+
               endContent={
                 <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
                   {isVisible ? (
