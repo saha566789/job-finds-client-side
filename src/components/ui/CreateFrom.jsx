@@ -1,11 +1,12 @@
-"use client"
+"use client";
 
 import React from 'react';
 import { Button } from "@nextui-org/button";
 import { Input, Textarea } from "@nextui-org/react";
 import { useForm, Controller } from 'react-hook-form';
 import { Select, SelectItem } from "@nextui-org/react";
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const CreateForm = () => {
   const router = useRouter();
@@ -39,7 +40,16 @@ const CreateForm = () => {
       });
 
       if (res.status === 201) {
-        console.log("Post created successfully");
+        toast.success('Job added successfully', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         reset(); 
         router.push("/joblist"); 
       } else {

@@ -49,7 +49,7 @@ const Login = () => {
 
     if (res?.error) {
       setError("Invalid email or password");
-      if (res?.url) router.replace("/dashboard");
+      if (res?.url) router.replace("/");
     } else {
       setError("");
     }
@@ -57,11 +57,11 @@ const Login = () => {
 
   if (sessionStatus === "loading") {
     return <div className="flex justify-center items-center h-[500px] mt-24 "><Progress
-    size="sm"
-    isIndeterminate
-    aria-label="Loading..."
-    className="max-w-md"
-  /></div>;
+      size="sm"
+      isIndeterminate
+      aria-label="Loading..."
+      className="max-w-md"
+    /></div>;
   }
 
   return (
@@ -75,13 +75,15 @@ const Login = () => {
               type="email"
               label="Email"
               variant="bordered"
-              defaultValue="abc@gmail.com"
+              placeholder="Enter your email"
               className="max-w-xs mb-6"
             />
             <Input
+              type="password"
               label="Password"
               variant="bordered"
               placeholder="Enter your password"
+              autoComplete="current-password"
 
               endContent={
                 <button className="focus:outline-none" type="button" onClick={toggleVisibility}>

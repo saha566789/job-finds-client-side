@@ -6,6 +6,8 @@ import { Inter } from "next/font/google";
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/utils/SessionProvider";
 import {Providers} from "./providers";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 // shared
 import Navbar from "@/components/shared/Navbar"
@@ -32,11 +34,13 @@ export default async function RootLayout({
           <div className="mx-auto max-w-5xl  text-2xl gap-2 mb-10">
             <Navbar />
             {children}
+            
             <Footer />
           </div>
+          <ToastContainer />
         </SessionProvider>
         </Providers>
-        
+      
       </body>
     </html>
   );

@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react";
 import { AiFillDelete } from 'react-icons/ai';
 import { FiEdit } from 'react-icons/fi';
+import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 const JobsPage = () => {
   const [jobs, setJobs] = useState([]);
@@ -26,6 +28,33 @@ const JobsPage = () => {
     fetchJobs();
   }, []);
 
+  const handleDeletePost = async (postId) => {
+    try {
+      const res = await fetch(`/api/jobs?id=${postId}`, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        toast.error('Job deleted successfully', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          
+          });;
+        setJobs(jobs.filter(job => job._id !== postId));
+      } else {
+        console.error("Failed to delete post");
+      }
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+  };
+
   return (
     <div className="max-w-[1450px] w-[90%] mx-auto min-h-screen mt-20">
       <div className="w-full mt-5 text-center">
@@ -47,13 +76,17 @@ const JobsPage = () => {
                 <TableCell>{job.type}</TableCell>
                 <TableCell>{job.salary}</TableCell>
                 <TableCell className='flex gap-2'>
-                <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <FiEdit />
-              </span>
-                    <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                <AiFillDelete />
-              </span>
-              </TableCell>
+                <Link href={`/update/${job._id}`}>
+                    <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                      <FiEdit />
+                    </span>
+                  </Link>
+                  <span 
+                    onClick={() => handleDeletePost(job._id)}
+                    className="text-lg text-danger cursor-pointer active:opacity-50">
+                    <AiFillDelete />
+                  </span>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -28,3 +28,10 @@ export const GET = async () => {
       return new NextResponse("Database Error", { status: 500 });
     }
   };
+
+  export async function DELETE(request:any) {
+    const id = request.nextUrl.searchParams.get("id");
+    await connect();
+    await Post.findByIdAndDelete(id);
+    return NextResponse.json({ message: "Topic deleted" }, { status: 200 });
+  }
